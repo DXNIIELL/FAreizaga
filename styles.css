@@ -1,0 +1,935 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(45deg, #1a2a6c, #b21f1f, #fdbb2d);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    background-size: cover;
+    background-attachment: fixed;
+    transition: background 0.5s ease;
+}
+
+main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.glass-panel {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 2rem;
+    margin: 1rem auto;
+    width: 90%;
+    max-width: 800px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.glass-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        transparent
+    );
+    transition: 0.5s;
+}
+
+.glass-panel:hover::before {
+    left: 100%;
+}
+
+.avatar-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto 1.5rem;
+}
+
+.avatar {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    object-fit: cover;
+    object-position: center;
+    transition: all 0.5s ease;
+}
+
+.avatar:hover {
+    transform: scale(1.05);
+    border-color: #4ecdc4;
+}
+
+h1 {
+    color: white;
+    text-align: center;
+    margin-bottom: 0.8rem;
+    font-size: 2rem;
+    font-weight: 600;
+    position: relative;
+    overflow: hidden;
+}
+
+h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: #4ecdc4;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+h1:hover::after {
+    width: 100%;
+}
+
+p {
+    color: rgba(255, 255, 255, 0.9);
+    text-align: center;
+    margin-bottom: 1.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.5;
+    font-size: 1.1rem;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.social-links a {
+    color: white;
+    font-size: 1.5rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.social-links a:hover {
+    transform: translateY(-3px) scale(1.2);
+    color: #4ecdc4;
+}
+
+h2 {
+    color: white;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: #4ecdc4;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+h2:hover::after {
+    width: 100%;
+}
+
+.skill-bar {
+    background: rgba(255, 255, 255, 0.2);
+    height: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+    margin: 0.5rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.skill-progress {
+    height: 100%;
+    background: linear-gradient(90deg, #4ecdc4, #45b7af);
+    border-radius: 5px;
+    transition: width 1s ease-in-out;
+    position: relative;
+}
+
+.skill-progress::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    animation: shimmer 2s infinite;
+    transform: translateX(-100%);
+}
+
+@keyframes shimmer {
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+.skill {
+    margin-bottom: 1rem;
+    width: 100%;
+    text-align: center;
+}
+
+.skill span {
+    color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.skill span i {
+    font-size: 1.2rem;
+    width: 1.5rem;
+    text-align: center;
+}
+
+.cards-row {
+    display: flex;
+    gap: 1rem;
+    width: 90%;
+    max-width: 1600px;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+.skills-section,
+.languages-section {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.languages-section .skills-container {
+    height: 100%;
+    justify-content: space-evenly;
+    padding: 2rem 0;
+}
+
+.languages-section .skill {
+    margin-bottom: 2rem;
+}
+
+.languages-section .skill-bar {
+    height: 12px;
+}
+
+/* Hacer el diseño responsive */
+@media (max-width: 768px) {
+    .cards-row {
+        flex-direction: column;
+    }
+    .languages-section .skills-container {
+        padding: 1rem 0;
+        height: auto;
+    }
+    
+    .languages-section .skill {
+        margin-bottom: 1.5rem;
+    }
+}
+
+/* Añadir más estilos según necesidades */
+
+.skills-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.accessibility-widget {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+}
+
+.accessibility-button {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: white;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.accessibility-button:hover {
+    transform: rotate(15deg) scale(1.1);
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.accessibility-menu {
+    position: absolute;
+    left: 0;
+    top: 60px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 10px;
+    padding: 1rem;
+    width: 250px;
+    display: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.accessibility-menu.active {
+    display: block;
+}
+
+.accessibility-menu h3 {
+    color: #333;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+}
+
+.accessibility-menu button {
+    width: 100%;
+    padding: 0.5rem;
+    margin: 0.2rem 0;
+    border: none;
+    background: none;
+    text-align: left;
+    cursor: pointer;
+    color: #444;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.accessibility-menu button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1) translate(-50%, -50%);
+    transition: 0.5s;
+}
+
+.accessibility-menu button:hover::after {
+    transform: scale(20) translate(-50%, -50%);
+    opacity: 0.1;
+}
+
+/* Clases para las funciones de accesibilidad */
+body.increased-text {
+    font-size: 120%;
+}
+
+body.decreased-text {
+    font-size: 90%;
+}
+
+body.grayscale {
+    filter: grayscale(100%);
+}
+
+body.high-contrast {
+    filter: contrast(150%);
+}
+
+body.negative-contrast {
+    filter: invert(100%);
+}
+
+body.light-background {
+    background: #ffffff !important;
+    color: #000000 !important;
+}
+
+body.underline-links a {
+    text-decoration: underline !important;
+}
+
+body.readable-font * {
+    font-family: Arial, sans-serif !important;
+}
+
+.dark-mode-button {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: white;
+    backdrop-filter: blur(10px);
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+}
+
+.dark-mode-button:hover {
+    transform: rotate(15deg) scale(1.1);
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Estilos para modo oscuro */
+body.dark-mode {
+    background: linear-gradient(45deg, #0a0a0a, #1a1a1a, #2a2a2a);
+}
+
+body.dark-mode .glass-panel {
+    background: rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .accessibility-menu {
+    background: rgba(0, 0, 0, 0.95);
+}
+
+body.dark-mode .accessibility-menu h3,
+body.dark-mode .accessibility-menu button {
+    color: #fff;
+}
+
+body.dark-mode .accessibility-menu button:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.certifications-section {
+    width: 95% !important;  /* Hacer la sección más ancha */
+    max-width: 1200px !important;  /* Aumentar el ancho máximo */
+}
+
+.certifications-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem;
+}
+
+/* Ajuste responsive para certificaciones */
+@media (max-width: 768px) {
+    .certifications-container {
+        grid-template-columns: 1fr;  /* Una columna en móviles */
+    }
+}
+
+.certification {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
+    border-radius: 15px;
+    background: linear-gradient(
+        135deg,
+        rgba(255, 255, 255, 0.2),
+        rgba(255, 255, 255, 0.1)
+    );
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transform: scale(1);
+}
+
+.certification:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.certification i {
+    font-size: 2rem;
+    color: white;
+    margin-bottom: 1rem;
+}
+
+.certification h3 {
+    color: white;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.cert-date {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.9rem;
+}
+
+/* Ajuste para modo oscuro */
+body.dark-mode .certification {
+    background: linear-gradient(
+        135deg,
+        rgba(0, 0, 0, 0.3),
+        rgba(0, 0, 0, 0.2)
+    );
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Fallback para navegadores que no soportan backdrop-filter */
+@supports not (backdrop-filter: blur(5px)) {
+    .certification {
+        background: rgba(255, 255, 255, 0.3);
+    }
+    
+    body.dark-mode .certification {
+        background: rgba(0, 0, 0, 0.5);
+    }
+}
+
+/* Estilos específicos para iOS Safari */
+@supports (-webkit-touch-callout: none) {
+    .certification {
+        background: rgba(0, 0, 0, 0.4) !important;
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    body.dark-mode .certification {
+        background: rgba(0, 0, 0, 0.7) !important;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+}
+
+/* Ajuste específico para dispositivos móviles */
+@media (max-width: 768px) {
+    .certification {
+        background: rgba(0, 0, 0, 0.4);
+        backdrop-filter: none;
+        -webkit-backdrop-filter: none;
+    }
+
+    body.dark-mode .certification {
+        background: rgba(0, 0, 0, 0.7);
+    }
+}
+
+.language-toggle-button {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    color: white;
+    backdrop-filter: blur(10px);
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+}
+
+.language-toggle-button:hover {
+    transform: rotate(15deg) scale(1.1);
+    background: rgba(255, 255, 255, 0.3);
+}
+
+/* Clase para contenido en inglés (oculto por defecto) */
+[lang="en"] {
+    display: none;
+}
+
+/* Cuando el body tiene la clase 'english', mostrar contenido en inglés y ocultar español */
+body.english [lang="es"] {
+    display: none;
+}
+
+body.english [lang="en"] {
+    display: block;
+}
+
+/* Estilos responsive generales */
+@media (max-width: 768px) {
+    body {
+        padding: 1rem;
+    }
+
+    .glass-panel {
+        padding: 1.5rem;
+        margin: 0.5rem auto;
+        width: 95%;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+    }
+
+    /* Ajuste de los botones de accesibilidad */
+    .accessibility-widget {
+        top: 10px;
+        left: 10px;
+    }
+
+    .accessibility-button,
+    .dark-mode-button,
+    .language-toggle-button {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+        margin-bottom: 0.5rem;
+    }
+
+    /* Ajuste del menú de accesibilidad */
+    .accessibility-menu {
+        width: 200px;
+        font-size: 0.9rem;
+    }
+
+    /* Ajuste de las tarjetas de certificaciones */
+    .certifications-container {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 0.5rem;
+    }
+
+    .certification {
+        padding: 1rem;
+    }
+
+    .certification h3 {
+        font-size: 1rem;
+    }
+
+    .certification i {
+        font-size: 1.5rem;
+    }
+
+    /* Ajuste de las barras de habilidades */
+    .skills-container {
+        padding: 0.5rem;
+    }
+
+    .skill {
+        margin-bottom: 0.8rem;
+    }
+
+    .skill span {
+        font-size: 0.9rem;
+    }
+
+    /* Ajuste de los enlaces sociales */
+    .social-links {
+        gap: 1rem;
+    }
+
+    .social-links a {
+        font-size: 1.3rem;
+    }
+
+    /* Ajuste del avatar */
+    .avatar-container,
+    .avatar {
+        width: 120px;
+        height: 120px;
+    }
+
+    /* Ajuste de la tarjeta de contacto */
+    .contact-card {
+        padding: 0.8rem;
+        margin: 0.8rem auto;
+    }
+
+    .email-container {
+        font-size: 0.8rem;
+    }
+
+    .contact-buttons {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .contact-btn, .copy-btn {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* Ajustes para pantallas muy pequeñas */
+@media (max-width: 380px) {
+    body {
+        padding: 0.5rem;
+    }
+
+    .glass-panel {
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 1.3rem;
+    }
+
+    .certification h3 {
+        font-size: 0.9rem;
+    }
+
+    .accessibility-menu {
+        width: 180px;
+        left: -140px;
+    }
+
+    .email-container {
+        font-size: 0.75rem;
+    }
+}
+
+/* Ajuste para orientación landscape en móviles */
+@media (max-height: 500px) and (orientation: landscape) {
+    body {
+        padding: 0.5rem;
+    }
+
+    .cards-row {
+        flex-direction: row;
+    }
+
+    .glass-panel {
+        margin: 0.3rem auto;
+    }
+
+    .avatar-container,
+    .avatar {
+        width: 80px;
+        height: 80px;
+    }
+
+    .contact-buttons {
+        flex-direction: row;
+    }
+}
+
+/* Ajustes para tablets */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .glass-panel {
+        width: 95%;
+    }
+
+    .certifications-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+}
+
+/* Ajustes para dispositivos con pantalla táctil */
+@media (hover: none) {
+    .glass-panel:hover::before,
+    .certification:hover,
+    .social-links a:hover,
+    .contact-btn:hover,
+    .copy-btn:hover {
+        transform: none;
+        box-shadow: none;
+    }
+
+    h1::after,
+    h2::after {
+        display: none;
+    }
+
+    .accessibility-button:hover,
+    .dark-mode-button:hover,
+    .language-toggle-button:hover {
+        transform: none;
+    }
+}
+
+/* Animaciones de entrada */
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 1s ease-out forwards;
+}
+
+.slide-in-left {
+    opacity: 0;
+    transform: translateX(-100px);
+    animation: slideInLeft 1s ease-out forwards;
+}
+
+.slide-in-right {
+    opacity: 0;
+    transform: translateX(100px);
+    animation: slideInRight 1s ease-out forwards;
+}
+
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+/* Definición de las animaciones */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Clase para activar las animaciones */
+.animate {
+    animation-play-state: running !important;
+}
+
+.contact-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 1rem;
+    margin: 1rem auto;
+    max-width: 400px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.email-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    color: white;
+    font-size: 0.9rem;
+}
+
+.contact-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.contact-btn, .copy-btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 0.9rem;
+}
+
+.contact-btn {
+    background: #4ecdc4;
+    color: white;
+}
+
+.copy-btn {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.contact-btn:hover, .copy-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.contact-btn:active, .copy-btn:active {
+    transform: translateY(0);
+}
+
+/* Mensaje de copiado */
+.copy-message {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    animation: fadeInOut 2s ease-in-out;
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translateY(20px); }
+    20% { opacity: 1; transform: translateY(0); }
+    80% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(-20px); }
+}
